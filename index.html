@@ -41,7 +41,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 950px; /* ขยายความกว้างคอนเทนเนอร์เล็กน้อยรองรับ 3 การ์ด */
             width: 100%;
             background: var(--panel-bg);
             border-radius: 12px;
@@ -52,7 +52,7 @@
 
         .header {
             background: linear-gradient(135deg, var(--accent-blue) 0%, #0f172a 100%);
-            padding: 50px 30px; /* เพิ่ม Padding ให้รับกับโลโก้ที่ใหญ่ขึ้น */
+            padding: 50px 30px; 
             text-align: center;
             color: white;
             position: relative;
@@ -68,26 +68,25 @@
             background: linear-gradient(90deg, #3b82f6, var(--accent-yellow));
         }
 
-        /* ปรับขนาดโลโก้ให้ใหญ่ขึ้นและอยู่ในวงกลมพรีเมียม */
         .logo-container {
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 130px; /* ขยายขนาดใหญ่ขึ้น */
-            height: 130px; /* ขยายขนาดใหญ่ขึ้น */
+            width: 130px; 
+            height: 130px; 
             background: #ffffff;
-            border-radius: 50%; /* วงกลมสมบูรณ์ */
+            border-radius: 50%; 
             margin-bottom: 25px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             padding: 12px;
-            border: 4px solid rgba(251, 191, 36, 0.3); /* เพิ่มเส้นขอบเหลืองจางๆ */
+            border: 4px solid rgba(251, 191, 36, 0.3); 
             overflow: hidden;
         }
 
         .company-logo {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* ให้รูปอยู่ครบในกรอบ ไม่โดนตัด */
+            object-fit: contain; 
         }
 
         h1 {
@@ -110,7 +109,7 @@
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
@@ -145,8 +144,10 @@
             background: #ffffff;
         }
 
+        /* 🔴 ธีมสีของการ์ดแต่ละใบ */
         .menu-card.card-1:hover::before { background-color: #0284c7; }
         .menu-card.card-2:hover::before { background-color: var(--accent-blue); }
+        .menu-card.card-3:hover::before { background-color: #059669; } /* สีเขียว Emerald */
 
         .card-header {
             display: flex;
@@ -167,6 +168,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
+        /* Card 1: BPC Store (ฟ้า) */
         .card-1 .icon-wrapper { 
             background-color: #e0f2fe; 
             color: #0284c7; 
@@ -174,6 +176,7 @@
         }
         .card-1:hover .icon-wrapper { background-color: #0284c7; color: #ffffff; }
 
+        /* Card 2: CMMS Master (น้ำเงิน/เหลือง) */
         .card-2 .icon-wrapper { 
             background-color: #1e3a8a; 
             color: var(--accent-yellow); 
@@ -182,6 +185,17 @@
         .card-2:hover .icon-wrapper { 
             background-color: #172554; 
             transform: scale(1.05);
+        }
+
+        /* Card 3: Maintenance Report (เขียว) */
+        .card-3 .icon-wrapper { 
+            background-color: #d1fae5; 
+            color: #059669; 
+            border: 1px solid #a7f3d0;
+        }
+        .card-3:hover .icon-wrapper { 
+            background-color: #059669; 
+            color: #ffffff; 
         }
 
         .status-badge {
@@ -214,13 +228,14 @@
             margin-top: 18px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: #0284c7;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
+        .card-1 .action-text { color: #0284c7; }
         .card-2 .action-text { color: var(--accent-blue); }
+        .card-3 .action-text { color: #059669; }
 
         .menu-card:hover .action-text i {
             transform: translateX(5px);
@@ -252,6 +267,8 @@
         
         <div class="content">
             <div class="menu-grid">
+                
+                <!-- การ์ดที่ 1: BPC Store -->
                 <a href="https://script.google.com/macros/s/AKfycbzbeXFbqCNYA6F0GRiLXfK9WMizCXBZdrrdUQae10p_U-h018VQc6UbnhWS2yDBvHl-Aw/exec?page=1&search" target="_blank" class="menu-card card-1">
                     <div class="card-header">
                         <div class="icon-wrapper">
@@ -266,6 +283,7 @@
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
 
+                <!-- การ์ดที่ 2: CMMS Master -->
                 <a href="https://engpcl2530-uni.github.io/BPC-CMMS-System/" target="_blank" class="menu-card card-2">
                     <div class="card-header">
                         <div class="icon-wrapper">
@@ -279,6 +297,22 @@
                     <div class="card-desc">ระบบจัดการ Machine Ledger และบำรุงรักษาเครื่องจักรภายในโรงงาน</div>
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
+
+                <!-- 🔴 การ์ดที่ 3 (เพิ่มใหม่): Maintenance Report -->
+                <a href="https://engpcl2530-uni.github.io/Maintenance-Report/" target="_blank" class="menu-card card-3">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div class="status-badge">
+                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
+                        </div>
+                    </div>
+                    <div class="card-title">Maintenance Report</div>
+                    <div class="card-desc">ระบบบันทึกประวัติซ่อมบำรุงเครื่องจักร และ Admin Dashboard (CMMS System)</div>
+                    <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+
             </div>
         </div>
     </div>
