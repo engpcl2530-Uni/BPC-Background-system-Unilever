@@ -41,7 +41,7 @@
         }
 
         .container {
-            max-width: 950px; /* ขยายความกว้างคอนเทนเนอร์เล็กน้อยรองรับ 3 การ์ด */
+            max-width: 950px;
             width: 100%;
             background: var(--panel-bg);
             border-radius: 12px;
@@ -145,9 +145,9 @@
         }
 
         /* 🔴 ธีมสีของการ์ดแต่ละใบ */
-        .menu-card.card-1:hover::before { background-color: #0284c7; }
-        .menu-card.card-2:hover::before { background-color: var(--accent-blue); }
-        .menu-card.card-3:hover::before { background-color: #059669; } /* สีเขียว Emerald */
+        .menu-card.card-1:hover::before { background-color: #059669; } /* สีเขียว */
+        .menu-card.card-2:hover::before { background-color: #0284c7; } /* สีฟ้า */
+        .menu-card.card-3:hover::before { background-color: var(--accent-blue); } /* สีน้ำเงิน */
 
         .card-header {
             display: flex;
@@ -168,34 +168,34 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        /* Card 1: BPC Store (ฟ้า) */
+        /* Card 1: Maintenance Report (เขียว) */
         .card-1 .icon-wrapper { 
-            background-color: #e0f2fe; 
-            color: #0284c7; 
-            border: 1px solid #bae6fd;
-        }
-        .card-1:hover .icon-wrapper { background-color: #0284c7; color: #ffffff; }
-
-        /* Card 2: CMMS Master (น้ำเงิน/เหลือง) */
-        .card-2 .icon-wrapper { 
-            background-color: #1e3a8a; 
-            color: var(--accent-yellow); 
-            border: 1px solid #1e40af;
-        }
-        .card-2:hover .icon-wrapper { 
-            background-color: #172554; 
-            transform: scale(1.05);
-        }
-
-        /* Card 3: Maintenance Report (เขียว) */
-        .card-3 .icon-wrapper { 
             background-color: #d1fae5; 
             color: #059669; 
             border: 1px solid #a7f3d0;
         }
-        .card-3:hover .icon-wrapper { 
+        .card-1:hover .icon-wrapper { 
             background-color: #059669; 
             color: #ffffff; 
+        }
+
+        /* Card 2: BPC Store (ฟ้า) */
+        .card-2 .icon-wrapper { 
+            background-color: #e0f2fe; 
+            color: #0284c7; 
+            border: 1px solid #bae6fd;
+        }
+        .card-2:hover .icon-wrapper { background-color: #0284c7; color: #ffffff; }
+
+        /* Card 3: CMMS Master (น้ำเงิน/เหลือง) */
+        .card-3 .icon-wrapper { 
+            background-color: #1e3a8a; 
+            color: var(--accent-yellow); 
+            border: 1px solid #1e40af;
+        }
+        .card-3:hover .icon-wrapper { 
+            background-color: #172554; 
+            transform: scale(1.05);
         }
 
         .status-badge {
@@ -233,9 +233,9 @@
             gap: 6px;
         }
 
-        .card-1 .action-text { color: #0284c7; }
-        .card-2 .action-text { color: var(--accent-blue); }
-        .card-3 .action-text { color: #059669; }
+        .card-1 .action-text { color: #059669; }
+        .card-2 .action-text { color: #0284c7; }
+        .card-3 .action-text { color: var(--accent-blue); }
 
         .menu-card:hover .action-text i {
             transform: translateX(5px);
@@ -268,8 +268,23 @@
         <div class="content">
             <div class="menu-grid">
                 
-                <!-- การ์ดที่ 1: BPC Store -->
-                <a href="https://script.google.com/macros/s/AKfycbzbeXFbqCNYA6F0GRiLXfK9WMizCXBZdrrdUQae10p_U-h018VQc6UbnhWS2yDBvHl-Aw/exec?page=1&search" target="_blank" class="menu-card card-1">
+                <!-- การ์ดที่ 1: Maintenance Report -->
+                <a href="https://engpcl2530-uni.github.io/Maintenance-Report/" target="_blank" class="menu-card card-1">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div class="status-badge">
+                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
+                        </div>
+                    </div>
+                    <div class="card-title">Maintenance Report</div>
+                    <div class="card-desc">ระบบบันทึกประวัติซ่อมบำรุงเครื่องจักร และ Admin Dashboard (CMMS System)</div>
+                    <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+
+                <!-- การ์ดที่ 2: BPC Store -->
+                <a href="https://script.google.com/macros/s/AKfycbzbeXFbqCNYA6F0GRiLXfK9WMizCXBZdrrdUQae10p_U-h018VQc6UbnhWS2yDBvHl-Aw/exec?page=1&search" target="_blank" class="menu-card card-2">
                     <div class="card-header">
                         <div class="icon-wrapper">
                             <i class="fa-solid fa-boxes-packing"></i>
@@ -283,33 +298,18 @@
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
 
-                <!-- การ์ดที่ 2: CMMS Master -->
-                <a href="https://engpcl2530-uni.github.io/BPC-CMMS-System/" target="_blank" class="menu-card card-2">
+                <!-- การ์ดที่ 3: CMMS Master -->
+                <a href="https://engpcl2530-uni.github.io/BPC-CMMS-System/" target="_blank" class="menu-card card-3">
                     <div class="card-header">
                         <div class="icon-wrapper">
                             <i class="fa-solid fa-microchip"></i>
                         </div>
                         <div class="status-badge">
-                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Offline
+                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
                         </div>
                     </div>
                     <div class="card-title">CMMS Master</div>
                     <div class="card-desc">ระบบจัดการ Machine Ledger และบำรุงรักษาเครื่องจักรภายในโรงงาน</div>
-                    <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
-                </a>
-
-                <!-- 🔴 การ์ดที่ 3 (เพิ่มใหม่): Maintenance Report -->
-                <a href="https://engpcl2530-uni.github.io/Maintenance-Report/" target="_blank" class="menu-card card-3">
-                    <div class="card-header">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-wrench"></i>
-                        </div>
-                        <div class="status-badge">
-                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
-                        </div>
-                    </div>
-                    <div class="card-title">Maintenance Report</div>
-                    <div class="card-desc">ระบบบันทึกประวัติซ่อมบำรุงเครื่องจักร และ Admin Dashboard (CMMS System)</div>
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
 
