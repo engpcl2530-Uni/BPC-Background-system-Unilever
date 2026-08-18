@@ -1,3 +1,10 @@
+จัดให้ครับ! ผมได้ทำการปรับโครงสร้างให้รองรับโปรแกรมที่ 4 เรียบร้อยแล้ว โดยเพิ่มโปรแกรม **SMP Online** เข้ามาเป็นลำดับที่ 3 (ใช้ธีมสีส้มเพื่อแยกให้ชัดเจน) และเลื่อน **CMMS Master** ไปเป็นลำดับที่ 4 ครับ
+
+นอกจากนี้ผมยังได้เพิ่มคลาส `.status-badge.offline` สำหรับป้ายสถานะ Offline ให้เป็นสีแดง เพื่อให้สมจริงและดูแบ่งแยกชัดเจนจากสถานะ Online ด้วยครับ
+
+คัดลอกโค้ดด้านล่างนี้ไปใช้ได้เลยครับ (อย่าลืมแก้ลิงก์ `href` ในการ์ดที่ 3 เป็นลิงก์ GitHub ของ SMP Online ของคุณนะครับ)
+
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -147,7 +154,8 @@
         /* 🔴 ธีมสีของการ์ดแต่ละใบ */
         .menu-card.card-1:hover::before { background-color: #059669; } /* สีเขียว */
         .menu-card.card-2:hover::before { background-color: #0284c7; } /* สีฟ้า */
-        .menu-card.card-3:hover::before { background-color: var(--accent-blue); } /* สีน้ำเงิน */
+        .menu-card.card-3:hover::before { background-color: #ea580c; } /* สีส้ม */
+        .menu-card.card-4:hover::before { background-color: var(--accent-blue); } /* สีน้ำเงิน */
 
         .card-header {
             display: flex;
@@ -187,17 +195,26 @@
         }
         .card-2:hover .icon-wrapper { background-color: #0284c7; color: #ffffff; }
 
-        /* Card 3: CMMS Master (น้ำเงิน/เหลือง) */
+        /* Card 3: SMP Online (ส้ม) */
         .card-3 .icon-wrapper { 
+            background-color: #ffedd5; 
+            color: #ea580c; 
+            border: 1px solid #fed7aa;
+        }
+        .card-3:hover .icon-wrapper { background-color: #ea580c; color: #ffffff; }
+
+        /* Card 4: CMMS Master (น้ำเงิน/เหลือง) */
+        .card-4 .icon-wrapper { 
             background-color: #1e3a8a; 
             color: var(--accent-yellow); 
             border: 1px solid #1e40af;
         }
-        .card-3:hover .icon-wrapper { 
+        .card-4:hover .icon-wrapper { 
             background-color: #172554; 
             transform: scale(1.05);
         }
 
+        /* ป้ายสถานะ */
         .status-badge {
             font-size: 0.75rem;
             padding: 4px 10px;
@@ -208,6 +225,12 @@
             border: 1px solid #bbf7d0;
             display: flex;
             align-items: center;
+        }
+        /* เพิ่มสถานะ Offline เป็นสีแดง */
+        .status-badge.offline {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
         }
 
         .card-title {
@@ -235,7 +258,8 @@
 
         .card-1 .action-text { color: #059669; }
         .card-2 .action-text { color: #0284c7; }
-        .card-3 .action-text { color: var(--accent-blue); }
+        .card-3 .action-text { color: #ea580c; }
+        .card-4 .action-text { color: var(--accent-blue); }
 
         .menu-card:hover .action-text i {
             transform: translateX(5px);
@@ -298,13 +322,29 @@
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
 
-                <!-- การ์ดที่ 3: CMMS Master -->
-                <a href="https://engpcl2530-uni.github.io/BPC-CMMS-System/" target="_blank" class="menu-card card-3">
+                <!-- การ์ดที่ 3: SMP Online -->
+                <!-- 🔴 อย่าลืมแก้ไข href ด้านล่างนี้ ให้เป็นลิงก์หน้าเว็บ SMP บน GitHub ของคุณ 🔴 -->
+                <a href="https://engpcl2530-uni.github.io/BPC-SMP-system/" target="_blank" class="menu-card card-3">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div class="status-badge">
+                            <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
+                        </div>
+                    </div>
+                    <div class="card-title">SMP Online</div>
+                    <div class="card-desc">ระบบจัดการและจัดทำเอกสารมาตรฐานการปฏิบัติงานซ่อมบำรุง (Standard Maintenance Procedure)</div>
+                    <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+
+                <!-- การ์ดที่ 4: CMMS Master -->
+                <a href="https://engpcl2530-uni.github.io/BPC-CMMS-System/" target="_blank" class="menu-card card-4">
                     <div class="card-header">
                         <div class="icon-wrapper">
                             <i class="fa-solid fa-microchip"></i>
                         </div>
-                        <div class="status-badge">
+                        <div class="status-badge offline">
                             <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Offline
                         </div>
                     </div>
@@ -319,3 +359,5 @@
 
 </body>
 </html>
+
+```
