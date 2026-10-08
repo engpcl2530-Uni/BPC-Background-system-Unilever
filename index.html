@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="logo.png">
     
     <style>
         :root {
@@ -148,6 +147,7 @@
         .menu-card.card-1:hover::before { background-color: #059669; } /* สีเขียว */
         .menu-card.card-2:hover::before { background-color: #0284c7; } /* สีฟ้า */
         .menu-card.card-3:hover::before { background-color: #ea580c; } /* สีส้ม */
+        .menu-card.card-4:hover::before { background-color: #9333ea; } /* สีม่วง */
 
 
         .card-header {
@@ -170,32 +170,20 @@
         }
 
         /* Card 1: Maintenance Report (เขียว) */
-        .card-1 .icon-wrapper { 
-            background-color: #d1fae5; 
-            color: #059669; 
-            border: 1px solid #a7f3d0;
-        }
-        .card-1:hover .icon-wrapper { 
-            background-color: #059669; 
-            color: #ffffff; 
-        }
+        .card-1 .icon-wrapper { background-color: #d1fae5; color: #059669; border: 1px solid #a7f3d0; }
+        .card-1:hover .icon-wrapper { background-color: #059669; color: #ffffff; }
 
         /* Card 2: BPC Store (ฟ้า) */
-        .card-2 .icon-wrapper { 
-            background-color: #e0f2fe; 
-            color: #0284c7; 
-            border: 1px solid #bae6fd;
-        }
+        .card-2 .icon-wrapper { background-color: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
         .card-2:hover .icon-wrapper { background-color: #0284c7; color: #ffffff; }
 
         /* Card 3: SMP Online (ส้ม) */
-        .card-3 .icon-wrapper { 
-            background-color: #ffedd5; 
-            color: #ea580c; 
-            border: 1px solid #fed7aa;
-        }
+        .card-3 .icon-wrapper { background-color: #ffedd5; color: #ea580c; border: 1px solid #fed7aa; }
         .card-3:hover .icon-wrapper { background-color: #ea580c; color: #ffffff; }
-
+        
+        /* Card 4: PM Calendar (ม่วง) */
+        .card-4 .icon-wrapper { background-color: #f3e8ff; color: #9333ea; border: 1px solid #e9d5ff; }
+        .card-4:hover .icon-wrapper { background-color: #9333ea; color: #ffffff; }
 
 
         /* ป้ายสถานะ */
@@ -210,11 +198,12 @@
             display: flex;
             align-items: center;
         }
-        /* เพิ่มสถานะ Offline เป็นสีแดง */
-        .status-badge.offline {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
+        
+        /* ป้ายสถานะกำลังพัฒนา (สีเหลือง/ส้ม) */
+        .status-badge.dev {
+            background: #fef9c3;
+            color: #a16207;
+            border: 1px solid #fde047;
         }
 
         .card-title {
@@ -243,10 +232,16 @@
         .card-1 .action-text { color: #059669; }
         .card-2 .action-text { color: #0284c7; }
         .card-3 .action-text { color: #ea580c; }
+        .card-4 .action-text { color: #9333ea; }
 
         .menu-card:hover .action-text i {
             transform: translateX(5px);
             transition: transform 0.3s ease;
+        }
+        
+        /* ซ่อนเอฟเฟกต์การขยับลูกศรสำหรับบล็อกที่กำลังเขียน */
+        .card-4:hover .action-text i {
+            transform: none;
         }
 
         @media (max-width: 600px) {
@@ -306,13 +301,12 @@
                 </a>
 
                 <!-- การ์ดที่ 3: SMP Online -->
-                <!-- 🔴 อย่าลืมแก้ไข href ด้านล่างนี้ ให้เป็นลิงก์หน้าเว็บ SMP บน GitHub ของคุณ 🔴 -->
                 <a href="https://engpcl2530-uni.github.io/BPC-SMP-system/" target="_blank" class="menu-card card-3">
                     <div class="card-header">
                         <div class="icon-wrapper">
                             <i class="fa-solid fa-clipboard-list"></i>
                         </div>
-                        <div class="status-badge Online">
+                        <div class="status-badge">
                             <i class="fa-solid fa-circle" style="font-size: 0.4rem; margin-right:5px;"></i> Online
                         </div>
                     </div>
@@ -321,11 +315,26 @@
                     <div class="action-text">เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
 
+                <!-- การ์ดที่ 4: PM Calendar (กำลังเขียน) -->
+                <a href="#" style="cursor: default;" class="menu-card card-4">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <!-- เปลี่ยนป้ายสถานะเป็นกำลังพัฒนา -->
+                        <div class="status-badge dev">
+                            <i class="fa-solid fa-tools" style="font-size: 0.6rem; margin-right:5px;"></i> In Progress
+                        </div>
+                    </div>
+                    <div class="card-title">PM Calendar</div>
+                    <div class="card-desc">แบบฟอร์มแผนซ่อมบำรุงประจำปี 52 สัปดาห์ (A3 Template)</div>
+                    <!-- ระบุข้อความโปรแกรมกำลังเขียน -->
+                    <div class="action-text"><i class="fa-solid fa-person-digging"></i> โปรแกรมนี้กำลังเขียน...</div>
+                </a>
+
             </div>
         </div>
     </div>
 
 </body>
 </html>
-
-```
